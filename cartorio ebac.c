@@ -14,7 +14,7 @@ int registro()
 		
 		printf("Digite o CPF a ser cadastrado: ");
 		scanf("%s", cpf); //le a entrada do usuario
-		strcpy(arquivo, cpf); //funÁ„o que copia a string pra variavel arquivo
+		strcpy(arquivo, cpf); //fun√ß√£o que copia a string pra variavel arquivo
 		
 		FILE *file; //cria o arquivo
 		file =  fopen(arquivo, "w"); //cria o arquivo
@@ -68,13 +68,13 @@ int consulta()
 			
 			if(file == NULL)				//se a consulta nao existir
 			{
-				printf("N„o foi possivel abrir o arquivo\n\n");
+				printf("N√£o foi possivel abrir o arquivo\n\n");
 				
 			}
 			
 			while(fgets(conteudo, 200, file) != NULL)   //se encontrar o cpf no banco
 			{
-				printf("\nEssas s„o as informaÁıes do usu·rio: ");
+				printf("\nEssas s√£o as informa√ß√µes do usu√°rio: ");
 				printf("%s", conteudo);
 				printf("\n\n");
 			}
@@ -93,13 +93,13 @@ int deletar()
 		
 		if(file == NULL)					//se nao encontrar o cliente
 			{
-			printf("Usu·rio nao encontrado!\n\n");
+			printf("Usu√°rio nao encontrado!\n\n");
 			system("pause");
   			}
   		else								//se encontrar o cliente
   			{  		  
 			remove(cpf);
-			printf("Usu·rio excluido com sucesso!\n\n");
+			printf("Usu√°rio excluido com sucesso!\n\n");
 			system("pause");
 			}
 		
@@ -107,48 +107,61 @@ int deletar()
 int main()
 
     {
+		int opcao=0;
     	int laco=1;
-		for (laco=1;laco=1; )
-	{
-		system("cls");
-		int opcao=0; //definindo variaveis
-		setlocale(LC_ALL, "portuguese");
-		printf("\t### CartÛrio da EBAC   ### \n\n");
-		printf("\tEscolha a opÁ„o desejada do menu:\n\n");
-		printf("\t1 - Registrar nomes\n");
-		printf("\t2 - Consultar nomes\n");
-    	printf("\t3 - Deletar nomes\n");
-    	printf("\t4 - Sair\n");
-    	printf("\t OpÁ„o: "); //fim do menu
-    	scanf("%d", &opcao); //armazenando a escolha do usu·rio
-    	system("cls");
+		char senhadigitada[10]="a";
+		int comparacao;
+		printf("\t### Cart√≥rio da EBAC   ### \n\n");
+		printf("Login do administrador:\n\nDigite a senha para o administrador:");
+		scanf("%s",senhadigitada);
+		comparacao = strcmp(senhadigitada, "admin");
+		
+		if(comparacao == 0)
+		{
+			for (laco=1;laco=1; )
+			{
+			system("cls");
+			int opcao=0; //definindo variaveis
+			setlocale(LC_ALL, "portuguese");
+			printf("\t### Cart√≥rio da EBAC   ### \n\n");
+			printf("\tEscolha a op√ß√£o desejada do menu:\n\n");
+			printf("\t1 - Registrar nomes\n");
+			printf("\t2 - Consultar nomes\n");
+    		printf("\t3 - Deletar nomes\n");
+    		printf("\t4 - Sair\n");
+    		printf("\t Op√ß√£o: "); //fim do menu
+    		scanf("%d", &opcao); //armazenando a escolha do usu√°rio
+    		system("cls");
     
-    switch(opcao)
-    {
-    	case 1:
-    	registro();
-		break;
+    		switch(opcao)
+    		{
+    		case 1:
+    		registro();
+			break;
 		
-		case 2:
-		consulta();
-		break;
+			case 2:
+			consulta();
+			break;
 		
-		case 3:
-		deletar();
-		break;
+			case 3:
+			deletar();
+			break;
 		
-		case 4:
-		printf("Obrigado por utilizar o nosso sistema!\n\n");
-		return 0;
-		break;
+			case 4:
+			printf("Obrigado por utilizar o nosso sistema!\n\n");
+			return 0;
+			break;
 		
-		default: 
-		printf("Essa opÁ„o n„o est· disponivÈl!\n");
-		system("pause");
-		break;
-	 //fim da seleÁ„o
-	}
+			default: 
+			printf("Essa op√ß√£o n√£o est√° disponiv√©l!\n");
+			system("pause");
+			break;
+			 //fim da sele√ß√£o
+			
         
-}
-}
-
+			}	
+		}
+	}
+	else 
+		printf("Senha incorreta!\nTente novamente.\n");
+}	
